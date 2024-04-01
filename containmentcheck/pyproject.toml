@@ -11,39 +11,29 @@ containmentcheck = "containmentcheck.main:cli"
 python = "^3.8"
 rich = "^10.9.0"
 typer = "^0.7.0"
+ruff = "^0.3.4"
+mypy = "^1.9.0"
 
 [tool.poetry.dev-dependencies]
 taskipy = "^1.8.1"
-flake8 = "^3.9.2"
-pydocstyle = "^6.1.1"
-pylint = "^2.10.2"
-mypy = "^0.910"
 
 [tool.poetry.group.dev.dependencies]
 pymarkdownlnt = "^0.9.11"
-isort = "^5.12.0"
-black = "^23.3.0"
 
 [tool.taskipy.tasks]
-black = { cmd = "black containmentcheck --check", help = "Run the black checks for source code format" }
-fiximports = { cmd = "isort containmentcheck", help = "Run isort to fix source code imports" }
-fixformat = { cmd = "black containmentcheck", help = "Run the black checks for source code format" }
-isort = { cmd = "isort -c containmentcheck", help = "Run the isort checks for source code" }
-flake8 = { cmd = "flake8 containmentcheck", help = "Run the flake8 checks for source code documentation" }
+ruff = { cmd = "ruff check --preview --output-format=concise", help = "Run the ruff checks for source code format and linting" }
+fix = { cmd = "ruff --fix", help = "Fix the fixable ruff errors in source code format" }
+ruffdetails = { cmd = "ruff check --preview", help = "Run the ruff checks for source code format and linting" }
 markdownlint = { cmd = "poetry run pymarkdown --config .pymarkdown.cfg scan ../writing/reflection.md ../README.md", help = "Run the markdown linter on writing" }
 mypy = { cmd = "poetry run mypy containmentcheck", help = "Run the mypy type checker for potential type errors" }
-pydocstyle = { cmd = "pydocstyle containmentcheck tests", help = "Run the pydocstyle checks for source code documentation" }
-pylint = { cmd = "pylint containmentcheck tests", help = "Run the pylint checks for source code documentation" }
-all = "task black && task isort && task flake8 && task markdownlint && task mypy && task pydocstyle && task pylint && task test"
-lint = "task black && task isort && task flake8 && task markdownlint && task mypy && task pydocstyle && task pylint"
+all = "task ruff && task markdownlint && task mypy && task test"
+black = { cmd = "echo Ruff has replaced black, isort, flake8, pylint, pydocstyle. See pyproject.toml" }
+isort = { cmd = "echo Ruff has replaced black, isort, flake8, pylint, pydocstyle. See pyproject.toml" }
+flake8 = { cmd = "echo Ruff has replaced black, isort, flake8, pylint, pydocstyle. See pyproject.toml" }
+pylint = { cmd = "echo Ruff has replaced black, isort, flake8, pylint, pydocstyle. See pyproject.toml" }
+fiximports = { cmd = "echo Ruff has replaced black, isort, flake8, pylint, pydocstyle. See pyproject.toml" }
+fixformat = { cmd = "echo Ruff has replaced black, isort, flake8, pylint, pydocstyle. See pyproject.toml" }
 
-[tool.isort]
-include_trailing_comma = true
-force_single_line = true
-force_grid_wrap = 0
-use_parentheses = true
-ensure_newline_before_comments = true
-line_length = 88
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -42,18 +42,18 @@ TODO: Provide a fenced code block with one output from running the program
 TODO: Give the exact command-line that resulted in this output
 TODO: Provide a fenced code block with one output from running the program
 
-## Experiment Design
+## Experiment Design for Worst-Case Analysis
 
 TODO: Explain the setup for your experiment that you plan to run to
 characterize the performance of the different configurations of containment
-checking algorithms. Remember, a containment check determines whether or not a
-specified value exists inside of some type of data container! For instance, you
-should consider the following parameters as a part of your experiment:
+checking algorithms. Remember, to configure your experiment to consider
+the worst case, which is when the container does not have a specified value
+inside! You can also consider following parameters as a part of your experiment:
 
 - The data container: `set`, `list`, and `tuple`
 - The size of the data container: small values (e.g., 1 million numbers) to big
   values (e.g., 32 million numbers)
-- Whether or not the value that it being searched for is in the list
+- Average versus worst case
 - The maximum value of the numbers that are inside of the data container
 
 TODO: You must justify every part of your experiment design and then furnish
@@ -135,3 +135,9 @@ TODO: Provide a one-paragraph response that answers this question in your own wo
 ### How do the empirical results suggest that you don't yet know the entire story about the performance of containment checking?
 
 TODO: Provide a one-paragraph response that answers this question in your own words.
+
+### What is the analytic time complexity of `in` in python?
+
+### Does the analytical complexity of `in` change based on the container?
+
+### Does the empirical timing data change based on the container?
